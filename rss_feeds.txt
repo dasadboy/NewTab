@@ -1,7 +1,0 @@
-My Anime List, https://myanimelist.net/rss/news.xml
-Crunchyroll, http://feeds.feedburner.com/crunchyroll/animenews
-IGN, http://feeds.ign.com/ign/video-guides
-CBC Canada, https://www.cbc.ca/cmlink/rss-canada
-Anime News Network, https://www.animenewsnetwork.com/all/rss.xml?ann-edition=us
-
-proxy = https://desolate-basin-60372.herokuapp.com/
