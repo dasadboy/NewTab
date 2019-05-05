@@ -1,4 +1,3 @@
-backgrounds/**
-!backgrounds/default.jpg
+backgrounds
 .vscode
 rss_feeds.txt
