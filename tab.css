@@ -1,0 +1,101 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  color: white;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#time {
+  display: block;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  transform: translateX(-50%) translateY(-50%);
+  top: 30%;
+  left: 50%;
+  font-size: 64pt;
+  font-weight: 700;
+  transition: 1s;
+}
+
+#date {
+  display: block;
+  position: absolute;
+  right: 0;
+  font-size: 16pt;
+  margin: 5px;
+}
+
+#newsBottom {
+  display: block;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  overflow: hidden;
+  width: 600px;
+  transition-duration: 1s;
+  box-shadow: 0 0 3px 10px #00000000;
+}
+
+#newsBottom:hover {
+  background-color: #00000090;
+  box-shadow: 0 0 3px 10px #00000090;
+}
+
+#title {
+  display: block;
+  position: relative;
+  font-size: 16pt;
+  width: 100%;
+  height: auto;
+}
+
+#title a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+#description {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  max-height: 54px;
+  font-size: 10pt;
+  white-space: pre-line;
+  transition: 1s;
+  z-index: 1;
+}
+
+#description:hover {
+  max-height: calc(100vh - 28px);
+  overflow-y: auto;
+}
+
+#description::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+#description::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 100%;
+}
+
+#description::-webkit-scrollbar-thumb {
+  background-color: #858585;
+  border-radius: 100%;
+}
