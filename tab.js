@@ -5,7 +5,7 @@ const displayDateAndTime = () => {
         "July", "August", "September", "October", "November", "December"];
   let timeInterval = setInterval(() => {
     const dateObj = new Date(),
-          date = `${dateObj.getDay()}  ${months[dateObj.getMonth()]}  ${
+          date = `${dateObj.getDate()}  ${months[dateObj.getMonth()]}  ${
             dateObj.getFullYear()}`,
           time = `${formatNumber(dateObj.getHours())}:${
             formatNumber(dateObj.getMinutes())}`;
