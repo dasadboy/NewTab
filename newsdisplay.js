@@ -39,7 +39,7 @@ const loadRSSFeed = (sourceName, feedSrc, proxy,) => {
         let parser = new DOMParser(),
             doc = parser.parseFromString(xmlTxt, "text/xml"),
             items = doc.querySelectorAll("item"),
-            len = Math.min(items.length, 5);
+            len = Math.min(items.length, 10);
         
         for (let i = 0; i < len; i++) {
           let article = new Article(items[i], sourceName);
@@ -59,28 +59,33 @@ const loadRSSFeed = (sourceName, feedSrc, proxy,) => {
 
 const setUpNewsDisplay = async () => {
   await getArticles();
-  const newsContainer = document.querySelector("#newsBottom");
+  if (allArticles.length >= 0) {
+    const newsContainer = document.querySelector("#newsBottom");
 
-  const chooseArticle = () => {
-    i = Math.floor(Math.random()*allArticles.length);
-    return allArticles[i];
+    const chooseArticle = () => {
+      i = Math.floor(Math.random()*allArticles.length);
+      return allArticles[i];
+    }
+    
+    const setNewArticle = () => {
+      Article.injectArticle(chooseArticle());
+    }
+
+    let changeArticleTimer = setInterval(setNewArticle, 20000);
+
+    const pause = () => {
+      clearInterval(changeArticleTimer);
+    }
+
+    const resume = () => {
+      changeArticleTimer = setInterval(setNewArticle, 20000);
+    }
+
+    newsContainer.addEventListener("mouseover", pause);
+
+    newsContainer.addEventListener("mouseout", resume);
+  } else {
+    console.log("There are no articles to display."
+    + " Add sources in options.");
   }
-  
-  const setNewArticle = () => {
-    Article.injectArticle(chooseArticle());
-  }
-
-  let changeArticleTimer = setInterval(setNewArticle, 20000);
-
-  const pause = () => {
-    clearInterval(changeArticleTimer);
-  }
-
-  const resume = () => {
-    changeArticleTimer = setInterval(setNewArticle, 20000);
-  }
-
-  document.querySelector("#newsBottom").addEventListener("mouseover", pause);
-
-  document.querySelector("#newsBottom").addEventListener("mouseout", resume);
 }
