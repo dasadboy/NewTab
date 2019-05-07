@@ -95,6 +95,23 @@ body {
   z-index: 1;
 }
 
+#description img {
+  display: block;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-height: 100px;
+  max-height: 100px;
+  float: left;
+  margin: 10px 10px 10px 0;
+}
+
+#description p {
+  display: block;
+  position: relative;
+  margin: 5px 0;
+}
+
 #description:hover {
   max-height: calc(100vh - 28px);
   overflow-y: auto;

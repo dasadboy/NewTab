@@ -2,8 +2,12 @@ class Article {
   constructor(item, source) {
     this.sourceName = source;
     this.title = item.querySelector("title").textContent;
-    this.description = item.querySelector("description").textContent;
     this.link = item.querySelector("link").textContent;
+    
+    let description = item.querySelector("description").textContent;
+    this.description = description.replace(/(<br>|<br\s*\/>)+\s*(<p)+/gi,
+    "<p");
+    
   }
 
   static injectArticle(article) {
@@ -66,7 +70,6 @@ const loadRSSFeed = (sourceName, feedSrc, proxy,) => {
 
 const setUpNewsDisplay = async () => {
   await getArticles();
-  console.log("ha");
   if (allArticles.length > 0) {
     const newsContainer = document.querySelector("#news");
 
@@ -95,8 +98,8 @@ const setUpNewsDisplay = async () => {
     newsContainer.addEventListener("mouseout", resume);
   } else {
     console.log("There are no articles to display."
-    + " Add sources in options.");
-    document.querySelector("#dragThis").innerHTML = "Set feed sources in"
-    + " options to view them here."
+    + " Add RSS feeds in options.");
+    document.querySelector("#dragThis").innerHTML = "Set RSS feeds in"
+    + " options to view news articles here."
   }
 }
