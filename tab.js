@@ -89,7 +89,6 @@ const setUpResize = () => {
 
   const startResize = event => {
     initialX = event.pageX;
-    console.log(initialX);
 
     newsDisplay.style.transition = "none";
 
@@ -104,7 +103,6 @@ const setUpResize = () => {
   }
 
   const endResize = event => {
-    console.log(displayWidth)
     window.removeEventListener("mousemove", resize);
     window.removeEventListener("mouseup", endResize);
   }

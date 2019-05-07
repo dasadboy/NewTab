@@ -36,7 +36,6 @@ const getArticles = () => {
       for (let x of loadPromises) {
         await x
       }
-      console.log(allArticles)
       resolve([newsFeeds, proxy]);
     });
   });
