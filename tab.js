@@ -29,7 +29,7 @@ const setBackground = () => {
   `url(backgrounds/${background})`;
 }
 
-const setUpDragAndResize = async () => {
+const setUpDrag = async () => {
   const newsDisplay = document.querySelector("#news");
   let posTop, posLeft,
       initialX, initialY;
@@ -51,7 +51,6 @@ const setUpDragAndResize = async () => {
   const startDrag = event => {
     initialX = event.pageX;
     initialY = event.pageY;
-    console.log(initialX, initialY);
     newsDisplay.style.transition = "none";
     
     window.addEventListener("mousemove", drag);
@@ -82,11 +81,43 @@ const setUpDragAndResize = async () => {
   document.querySelector("#dragThis").addEventListener("mousedown", startDrag);
 }
 
+const setUpResize = () => {
+  const newsDisplay = document.querySelector("#news"),
+        resizeBar = document.querySelector("#resizeNews");
+  let initialX,
+      displayWidth = newsDisplay.offsetWidth;
+
+  const startResize = event => {
+    initialX = event.pageX;
+    console.log(initialX);
+
+    newsDisplay.style.transition = "none";
+
+    window.addEventListener("mousemove", resize);
+    window.addEventListener("mouseup", endResize);
+  }
+
+  const resize = event => {
+    displayWidth = displayWidth + event.pageX - initialX
+    initialX = event.pageX;
+    newsDisplay.style.width = displayWidth + "px";
+  }
+
+  const endResize = event => {
+    console.log(displayWidth)
+    window.removeEventListener("mousemove", resize);
+    window.removeEventListener("mouseup", endResize);
+  }
+
+  resizeBar.addEventListener("mousedown", startResize);
+}
+
 const opsOnLoad = () => {
   displayDateAndTime();
   setBackground();
   setUpNewsDisplay();
-  setUpDragAndResize();
+  setUpDrag();
+  setUpResize();
 }
 
 
