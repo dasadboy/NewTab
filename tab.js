@@ -29,10 +29,64 @@ const setBackground = () => {
   `url(backgrounds/${background})`;
 }
 
+const setUpDragAndResize = async () => {
+  const newsDisplay = document.querySelector("#news");
+  let posTop, posLeft,
+      initialX, initialY;
+  await chrome.storage.local.get(["newsPosition"], value => {
+    posTop = value.newsPosition.top;
+    posLeft = value.newsPosition.left;
+
+    if (!posTop) {
+      newsDisplay.style.top = "70%";
+      newsDisplay.style.left = "30%";
+      posTop = newsDisplay.offsetTop;
+      posLeft = newsDisplay.offsetLeft;
+    } else {
+      newsDisplay.style.top = `${posTop}px`;
+      newsDisplay.style.left = `${posLeft}px`;
+    }
+  });
+
+  const startDrag = event => {
+    initialX = event.pageX;
+    initialY = event.pageY;
+    console.log(initialX, initialY);
+    newsDisplay.style.transition = "none";
+    
+    window.addEventListener("mousemove", drag);
+    window.addEventListener("mouseup", endDrag);
+  }
+
+  const drag = event => {
+    posTop = posTop + event.pageY - initialY;
+    posLeft = posLeft + event.pageX - initialX;
+    initialY = event.pageY;
+    initialX = event.pageX;
+    newsDisplay.style.top = posTop + "px";
+    newsDisplay.style.left = posLeft + "px";
+  }
+
+  const endDrag = event => {
+    newsDisplay.style.transition = "";
+    window.removeEventListener("mouseup", endDrag);
+    window.removeEventListener("mousemove", drag);
+    chrome.storage.local.set({
+      newsPosition: {
+        top: posTop,
+        left: posLeft
+      }
+    });
+  }
+
+  document.querySelector("#dragThis").addEventListener("mousedown", startDrag);
+}
+
 const opsOnLoad = () => {
   displayDateAndTime();
   setBackground();
   setUpNewsDisplay();
+  setUpDragAndResize();
 }
 
 

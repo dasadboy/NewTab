@@ -5,9 +5,7 @@ chrome.runtime.onInstalled.addListener(() => {
     fav_ids: [],
     newsPosition: {
       top: null,
-      bottom: null,
-      left: null,
-      right: null
+      left: null
     }
   },
   () => {
