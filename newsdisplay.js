@@ -60,7 +60,7 @@ const loadRSSFeed = (sourceName, feedSrc, proxy,) => {
 const setUpNewsDisplay = async () => {
   await getArticles();
   if (allArticles.length >= 0) {
-    const newsContainer = document.querySelector("#newsBottom");
+    const newsContainer = document.querySelector("#news");
 
     const chooseArticle = () => {
       i = Math.floor(Math.random()*allArticles.length);
