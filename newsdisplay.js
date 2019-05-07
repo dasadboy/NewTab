@@ -8,10 +8,12 @@ class Article {
 
   static injectArticle(article) {
     const titleContainer = document.querySelector("#title a"),
-          descriptionContainer = document.querySelector("#description");
+          descriptionContainer = document.querySelector("#description"),
+          sourceContainer = document.querySelector("#dragThis");
     titleContainer.innerHTML = article.title;
     titleContainer.href = article.link;
     descriptionContainer.innerHTML = article.description;
+    sourceContainer.innerHTML = article.sourceName;
   }
 }
 
@@ -19,14 +21,19 @@ let allArticles = [];
 
 const getArticles = () => {
   return new Promise(resolve => {
-    chrome.storage.local.get(["newsFeeds", "proxy"], value => {
+    chrome.storage.local.get(["newsFeeds", "proxy"], async value => {
       let newsFeeds = value.newsFeeds;
-          proxy = value.proxy;
-
+          proxy = value.proxy,
+          loadPromises = [];
+      
       for (let [name, src] of newsFeeds) {
-        loadRSSFeed(name, src, proxy)
+        loadPromises.push(loadRSSFeed(name, src, proxy));
       }
-      resolve({"newsFeeds": newsFeeds, "proxy": proxy});
+      for (let x of loadPromises) {
+        await x
+      }
+      console.log(allArticles)
+      resolve([newsFeeds, proxy]);
     });
   });
 }
@@ -34,20 +41,20 @@ const getArticles = () => {
 const loadRSSFeed = (sourceName, feedSrc, proxy,) => {
   return new Promise(resolve => {
     fetch(proxy + feedSrc).then(res => {
-      let articles = [];
       res.text().then(xmlTxt => {
         let parser = new DOMParser(),
             doc = parser.parseFromString(xmlTxt, "text/xml"),
             items = doc.querySelectorAll("item"),
-            len = Math.min(items.length, 10);
+            len = Math.min(items.length, 10),
+            articles = [];
         
         for (let i = 0; i < len; i++) {
           let article = new Article(items[i], sourceName);
           articles.push(article);
           allArticles.push(article);
         }
+        resolve(articles);
       });
-      resolve(articles);
     }).catch(err => console.error(
       "Error occured with:\n"
       + "source: '" + feedSrc + "'\n"
@@ -59,6 +66,7 @@ const loadRSSFeed = (sourceName, feedSrc, proxy,) => {
 
 const setUpNewsDisplay = async () => {
   await getArticles();
+  console.log("ha");
   if (allArticles.length > 0) {
     const newsContainer = document.querySelector("#news");
 
@@ -70,7 +78,8 @@ const setUpNewsDisplay = async () => {
     const setNewArticle = () => {
       Article.injectArticle(chooseArticle());
     }
-
+    
+    setNewArticle();
     let changeArticleTimer = setInterval(setNewArticle, 20000);
 
     const pause = () => {
@@ -87,5 +96,7 @@ const setUpNewsDisplay = async () => {
   } else {
     console.log("There are no articles to display."
     + " Add sources in options.");
+    document.querySelector("#dragThis").innerHTML = "Set feed sources in"
+    + " options to view them here."
   }
 }
