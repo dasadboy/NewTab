@@ -116,6 +116,7 @@ const opsOnLoad = () => {
   setUpNewsDisplay();
   setUpDrag();
   setUpResize();
+  setUpBookmarks();
 }
 
 
