@@ -142,27 +142,35 @@ input[type="submit"]:active {
   outline-color: #00000065;
 }
 
-#message {
+.alert {
   display: block;
   position: fixed;
   top: 100%;
   width: 300px;
   height: auto;
   padding: 10px;
-  background-color: #5eff00c0;
   left: 50%;
   transition-duration: 0.5s;
   text-align: center;
   transform: translateX(-50%)
 }
 
-#message.up {
+.alert.up {
   transform: translateY(-100%) translateX(-50%);
 }
 
-#message.down {
+.alert.down {
   transform: translateY(0) translateX(-50%);
 }
+
+#message {
+  background-color: #5eff00c0;
+}
+
+#warning {
+  background-color: #ff0000c0;
+}
+
 
 .feed {
   display:block;

@@ -287,8 +287,6 @@ const loadBookmarkFolder = bookmarkTree => {
   folderFolders.className = "folders";
   folderBookmarks.className = "bookmarks";
 
-  console.log(bookmarkTree)
-
   for (let bm of bookmarkTree.children) {
     let bookmark = document.createElement("span"),
         iconContainer = document.createElement("span"),
@@ -330,14 +328,15 @@ const loadBookmarkFolder = bookmarkTree => {
       }
 
       const action = () => {
-        if (bookmark.className === "page selected") {
-          console.log("-" + bm.id);
+        if (bookmark.className === "page" && favs.length < 5) {
+          fav_idsIndex = favs.length
+          bookmark.className = "page selected";
+          favs.push(bm.id);
+        } else if (bookmark.className === "page selected") {
           bookmark.className = "page";
           favs.splice(fav_idsIndex, 1);
         } else {
-          console.log(bm.id);
-          bookmark.className = "page selected";
-          favs.push(bm.id);
+          displayWarning("Can only favourite 5 bookmarks.")
         }
       }
 
@@ -379,6 +378,16 @@ const displayMessage = message => {
   const messageContainer = document.querySelector("#message");
   
   messageContainer.textContent = message;
+
+  messageContainer.className = "up";
+  clearTimeout(close);
+  close = setTimeout(() => messageContainer.className = "down", 2000);
+}
+
+const displayWarning = warning => {
+  const messageContainer = document.querySelector("#warning");
+  
+  messageContainer.textContent = warning;
 
   messageContainer.className = "up";
   clearTimeout(close);
