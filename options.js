@@ -213,7 +213,6 @@ const editSrc = (feed, index) => {
     if (event.keyCode === 27) {
       form.remove()
       removeListener()
-      console.log(event.keyCode)
     }
   }
 
@@ -271,7 +270,6 @@ const parseFeedsBlock = () => {
 
   for (feed of newFeeds) {
     if (feed.length === 2 && feed[0] && feed[1]) {
-      console.log(feed)
       feedsContainer.appendChild(buildFeed(feed));
       feeds.push(feed);
     }
@@ -329,12 +327,11 @@ const loadBookmarkFolder = bookmarkTree => {
 
       const action = () => {
         if (bookmark.className === "page" && favs.length < 5) {
-          fav_idsIndex = favs.length
           bookmark.className = "page selected";
           favs.push(bm.id);
         } else if (bookmark.className === "page selected") {
           bookmark.className = "page";
-          favs.splice(fav_idsIndex, 1);
+          favs = favs.filter(item => item !== bm.id);
         } else {
           displayWarning("Can only favourite 5 bookmarks.")
         }
@@ -379,9 +376,9 @@ const displayMessage = message => {
   
   messageContainer.textContent = message;
 
-  messageContainer.className = "up";
+  messageContainer.className = "alert up";
   clearTimeout(close);
-  close = setTimeout(() => messageContainer.className = "down", 2000);
+  close = setTimeout(() => messageContainer.className = "alert down", 2000);
 }
 
 const displayWarning = warning => {
@@ -389,9 +386,9 @@ const displayWarning = warning => {
   
   messageContainer.textContent = warning;
 
-  messageContainer.className = "up";
+  messageContainer.className = "alert up";
   clearTimeout(close);
-  close = setTimeout(() => messageContainer.className = "down", 2000);
+  close = setTimeout(() => messageContainer.className = "alert down", 2000);
 }
 
 const opsOnLoad = () => {
