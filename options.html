@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>New Tab Settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="options.css">
+  </head>
+  <body>
+    <div id="news" class="section">
+      <div id="feeds" class="content"></div>
+      <button id="addFeeds">Add Feed</button>
+      <button id="saveFeeds">Save Feeds</button>
+      <div id="proxy">
+        <span>
+          <input type="text" id="currentProxy" autocomplete="off"
+          placeholder="No proxy set.">
+        </span>
+        <button id="setProxy" class="fieldButton">Set Proxy</button>
+      </div>
+    </div>
+
+    <div id="bookmarks" class="section">
+      <button id="upOne"><div></div></button>
+      <div id="folders" class="content"></div>
+      <div id="pages" class="content"></div>
+      <button id="saveFavs">Save Favourites</button>
+    </div>
+
+    <div id="modalContainer" class="inactive">
+      <div id="inputFeed" class="modal inactive">
+        <form id="newFeedForm">
+          <input name="feedName" id="newFeedName" type="text"
+          placeholder="Feed name" autocomplete="off">
+          <input name="source" id="newFeedSrc" type="text"
+          placeholder="RSS Link" autocomplete="off">
+          <input type="submit">
+        </form>
+        <br>
+        <button id="addMultipleFeeds">
+          Add Multiple
+        </button>
+      </div>
+      <div id="inputFeeds" class="modal inactive">
+        <textarea id="feedsBlock" class="inputTextBlock"></textarea>
+        <button id="parseSubmit">Parse & Submit</button>
+      </div>
+    </div>
+    <div id="message" class="alert down"></div>
+    <div id="warning" class="alert down"></div>
+    <script src="options.js"></script>
+  </body>
+</html>
