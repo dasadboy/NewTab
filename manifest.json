@@ -1,0 +1,27 @@
+{
+  "name": "Another New Tab Page",
+  "manifest_version": 2,
+  "version": "1.0",
+  "description": "New tab page that displays news articles and user defined favourite bookmarks.",
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "storage",
+    "bookmarks",
+    "chrome://favicon/"
+  ],
+  "options_page": "options.html",
+  "browser_action": {
+    "default_icon": {
+      "32": "icons/icon32.png"
+    }
+  },
+  "chrome_url_overrides": {
+    "newtab": "tab.html"
+  },
+  "icons": {
+    "32": "icons/icon32.png"
+  }
+}
