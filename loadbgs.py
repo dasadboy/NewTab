@@ -11,7 +11,7 @@ def write_backgroundsjs():
     img_extentions = (".jpg", ".png", ".tiff", ".jpeg", ".tiff", ".gif")
     bg_list = [b for b in bg_list if b.endswith(img_extentions)]
 
-    lines = [f"backgrounds = [\n"]
+    lines = [f"let backgrounds = [\n"]
     
     for bg in bg_list:
         lines.append(f"\"{bg}\",\n") 
