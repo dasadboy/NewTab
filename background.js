@@ -6,6 +6,15 @@ chrome.runtime.onInstalled.addListener(() => {
     newsPosition: {
       top: null,
       left: null
+    },
+    newsPageColors: {
+      menu: "#101010",
+      menuText: "#ffffff",
+      menuBorder: "#ffffff",
+      article: "#a0a0a0",
+      articleTitle: "#ffffff",
+      articleDate: "#0000ff",
+      articleDesc: "#ffffff"
     }
   },
   () => {
