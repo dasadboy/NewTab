@@ -3,10 +3,12 @@ let favouriteBookmarks
 const getBookmarks = () => {
   return new Promise(resolve => {
     chrome.storage.local.get("fav_ids", value => {
-      chrome.bookmarks.get(value.fav_ids, bookmarks => {
-        favouriteBookmarks = bookmarks;
-        resolve(bookmarks);
-      });
+      if (value.fav_ids.length > 0) {
+        chrome.bookmarks.get(value.fav_ids, bookmarks => {
+          favouriteBookmarks = bookmarks;
+          resolve(bookmarks);
+        });
+      }
     });
   });
 }
