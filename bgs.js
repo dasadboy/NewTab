@@ -1,0 +1,3 @@
+backgrounds = [
+  "default.jpg",
+]
