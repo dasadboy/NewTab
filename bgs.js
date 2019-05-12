@@ -1,3 +1,0 @@
-backgrounds = [
-  "default.jpg",
-]
