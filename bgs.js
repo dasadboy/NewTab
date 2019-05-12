@@ -1,0 +1,3 @@
+let backgrounds = [
+  "default.jpg"
+]
