@@ -24,9 +24,9 @@ Add news feeds in options:
   1. Obtain url to an RSS feed.
   ```
   Example:
-  CBC has a [list of RSS feeds](https://rss.com/find-rss-feed/) that it hosts that can be obtained by simply googling "CBC rss".
+  CBC has a list of RSS feeds (https://rss.com/find-rss-feed/) that it hosts that can be obtained by simply googling "CBC rss".
   Some RSS feeds may be found in a similar way while others may require scouring a particular domain or even looking into a page's source code.
-  Refer [here](https://rss.com/find-rss-feed/) for detailed instructions.
+  Refer to https://rss.com/find-rss-feed/ for detailed instructions.
   ```
   2. Click the "Add Feed" button and enter a name of your choosing and the source feed
   ```
