@@ -33,7 +33,7 @@ Add news feeds in options:
   Using the "Top Stories" feed out of the list of feeds by CBC News,
   "Top Stories" would go in the first box and "https://www.cbc.ca/cmlink/rss-topstories" would go in the second.
   ```
-  *Alternatively* clicking the "Add Multiple" button takes you to a input text block. Here you can add multiple feeds.
+  3. *Alternatively* clicking the "Add Multiple" button takes you to a input text block. Here you can add multiple feeds.
   Feeds must be seperated by line. The feed name and url must be seperated by a comma
   ```
   Top Stories, https://rss.cbc.ca/lineup/topstories.xml
