@@ -192,6 +192,7 @@ input[type="submit"]:active {
   font-size: 12pt;
   white-space: pre;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .feed .name {
@@ -249,11 +250,12 @@ input[type="submit"]:active {
   top: 0;
   left: 0;
   margin: 0;
-  width: 350px;
+  width: 100%;
   height: 20px;
-  padding: 5px 0;
+  padding: 5px;
   background-color: white;
   border: none;
+  font-size: 10pt;
 }
 
 .feed form {
