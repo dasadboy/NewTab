@@ -154,6 +154,7 @@ const editName = (feed, index) => {
         textField = document.createElement("input");
 
   textField.type = "text";
+  textField.value = feed.querySelector(".name").textContent;
   form.append(textField);
   form.addEventListener("submit", event => {
     setName(textField, feed, index)
@@ -162,6 +163,8 @@ const editName = (feed, index) => {
   });
 
   feed.querySelector(".name").appendChild(form);
+
+  textField.focus();
   
   const cancelOnClickOutside = event => {
     if (event.target !== textField) {
@@ -193,6 +196,7 @@ const editSrc = (feed, index) => {
         textField = document.createElement("input");
 
   textField.type = "text";
+  textField.value = feed.querySelector(".src").textContent;
   form.append(textField);
   form.addEventListener("submit", event => {
     setSrc(textField, feed, index)
@@ -201,6 +205,8 @@ const editSrc = (feed, index) => {
   });
 
   feed.querySelector(".src").appendChild(form);
+
+  textField.focus();
   
   const cancelOnClickOutside = event => {
     if (event.target !== textField) {
