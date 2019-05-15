@@ -5,7 +5,6 @@ class Article {
     this.title = item.querySelector("title").textContent;
     this.description = item.querySelector("description").textContent;
     this.url = (item.querySelector("origlink")
-    || item.querySelector("guid")
     || item.querySelector("link")).textContent;
     this.date = item.querySelector("pubDate").textContent;
     this.categories = Article.parseCategories(item
