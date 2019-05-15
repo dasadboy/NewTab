@@ -2,7 +2,9 @@ class Article {
   constructor(item, source) {
     this.sourceName = source;
     this.title = item.querySelector("title").textContent;
-    this.link = item.querySelector("link").textContent;
+    this.link = (item.querySelector("origlink")
+    || item.querySelector("guid")
+    || item.querySelector("link")).textContent;
     
     let description = item.querySelector("description").textContent;
     this.description = description.replace(/(<br>|<br\s*\/>)+\s*(<p)+/gi,

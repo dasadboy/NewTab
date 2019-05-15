@@ -1,0 +1,168 @@
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  position: absolute;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(224, 224, 224);
+}
+
+::-webkit-scrollbar-track {
+  background: black;
+}
+
+body {
+  width: calc(100% + 150px);
+  overflow: hidden;
+  background-color: black;
+  font-size: 0;
+}
+
+body > span {
+  display: inline-block;
+  position: relative;
+  height: 100%;
+}
+
+#newsFeeds {
+  width: 154px;
+  top: 0;
+  left: -150px;
+  transition-delay: 0.5s;
+  transition-duration: 0.5s;
+  border-right: 1px solid;
+  overflow-y: auto;
+}
+
+#newsFeeds:hover, #newsFeeds.start {
+  left: 0px;
+  transition-delay: 0s;
+}
+
+#newsFeeds:hover + #feeds, #newsFeeds.start + #feeds {
+  left: 0px;
+  transition-duration: 0.5s;
+  transition-delay: 0s;
+}
+
+#feeds {
+  width: calc(100% - 155px);
+  left: -150px;
+  overflow: hidden;
+  transition-duration: 0.5s;
+  transition-delay: 0.5s;
+}
+
+.feedBtn {
+  display: block;
+  position: relative;
+  height: 50px;
+  width: calc(100%);
+  line-height: 50px;
+  padding: 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #4e008d;
+  border: none;
+  margin-bottom: 5px;
+}
+
+.feed {
+  height: 100%;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.feed.off {
+  display: none;
+}
+
+.feed.on {
+  display: block;
+}
+
+.feedName {
+  display: block;
+  position: relative;
+  color: black;
+  font-size: 20pt;
+  padding: 0 5px;
+  width: calc(100% - 10px);
+}
+
+.article {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 5px;
+  width: calc(100% - 10px);
+  margin-bottom: 2px;
+}
+
+.article div {
+  display: block;
+  position: relative;
+}
+
+.article img {
+  position: relative;
+}
+
+.title {
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.date {
+  font-size: 8px;
+  color: #999999
+}
+
+.desc {
+  font-size: 14px;
+  height: auto;
+}
+
+.desc p {
+ margin: 0;
+}
+
+.desc img {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.clock {
+  color: white;
+  display: block;
+  height: auto;
+}
+
+#newsFeeds .clock {
+  position: relative;
+  width: 100%;
+  font-size: 24pt;
+  padding: 10px;
+}
+
+#feeds .clock {
+  position: absolute;
+  width: auto;
+  font-size: 20px;
+  padding: 10px;
+  top: 0;
+  right: 0;
+}

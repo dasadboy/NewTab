@@ -40,7 +40,7 @@ body {
   position: absolute;
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
   width: 400px;
   height: auto;
   transition-duration: 1s;
@@ -57,15 +57,37 @@ body {
   box-shadow: inset 0 0 5px 1px #ffffff20;
   padding: 0 5px;
   height: 20px;
-  width: calc(100%);
+  width: calc(100% - 10px);
   line-height: 20px;
   transition-duration: 0.5s;
   user-select: none;
   cursor: grab;
+  overflow: visible;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #dragThis:hover {
-  box-shadow: inset 0 0 5px 1px #ffffff50;
+  box-shadow: inset 0 0 5px 1px #ffffff30;
+}
+
+#toNews {
+  display: block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 0;
+  right: 0;
+  background-image: url("tonewsicon.png");
+  background-size: cover;
+  background-position: center;
+  transition-duration: 0.3s;
+}
+
+#toNews:hover {
+  box-shadow: inset 0 0 50px #ffffff20;
+  width: 25px;
+  height: 25px;
 }
 
 #title {
