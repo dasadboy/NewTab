@@ -60,12 +60,15 @@ const loadRSSFeed = (sourceName, feedSrc, proxy,) => {
         }
         resolve(articles);
       });
-    }).catch(err => console.error(
-      "Error occured with:\n"
-      + "source: '" + feedSrc + "'\n"
-      + "proxy: '" + proxy + "'\n"
-      + err)
-    )
+    }).catch(err => {
+        console.error(
+        "Error occured with:\n"
+        + "source: '" + feedSrc + "'\n"
+        + "proxy: '" + proxy + "'\n"
+        + err)
+        document.querySelector("#dragThis").textContent = "Error occurred when"
+        + " fetching news feeds."
+    })
   });
 }
 
