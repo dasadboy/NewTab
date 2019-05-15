@@ -3,7 +3,6 @@ class Article {
     this.sourceName = source;
     this.title = item.querySelector("title").textContent;
     this.link = (item.querySelector("origlink")
-    || item.querySelector("guid")
     || item.querySelector("link")).textContent;
     
     let description = item.querySelector("description").textContent;
@@ -23,27 +22,21 @@ class Article {
   }
 }
 
-let allArticles = [];
+let allArticles = [], feeds, proxy;
 
-const getArticles = () => {
+const getFeeds = () => {
   return new Promise(resolve => {
     chrome.storage.local.get(["newsFeeds", "proxy"], async value => {
-      let newsFeeds = value.newsFeeds;
-          proxy = value.proxy,
-          loadPromises = [];
       
-      for (let [name, src] of newsFeeds) {
-        loadPromises.push(loadRSSFeed(name, src, proxy));
-      }
-      for (let x of loadPromises) {
-        await x
-      }
-      resolve([newsFeeds, proxy]);
+      feeds = value.newsFeeds;
+      proxy = value.proxy;
+          
+      resolve([value.newsFeeds, value.proxy]);
     });
   });
 }
 
-const loadRSSFeed = (sourceName, feedSrc, proxy,) => {
+const loadRSSFeed = (sourceName, feedSrc, proxy) => {
   return new Promise(resolve => {
     fetch(proxy + feedSrc).then(res => {
       res.text().then(xmlTxt => {
@@ -73,7 +66,10 @@ const loadRSSFeed = (sourceName, feedSrc, proxy,) => {
 }
 
 const setUpNewsDisplay = async () => {
-  await getArticles();
+  let loadingFeeds;
+  await getFeeds();
+  loadingFeeds = [...feeds].map(feed => loadRSSFeed(feed[0], feed[1], proxy));
+  for (p of loadingFeeds) await p;
   if (allArticles.length > 0) {
     const newsContainer = document.querySelector("#news");
 
