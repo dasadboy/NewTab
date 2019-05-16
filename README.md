@@ -9,7 +9,8 @@ Download or clone the directory.
 Add backgrounds into the "backgrounds" folder then:
   * if you have windows, run "loadbgs.bat"
   * if you have mac or linux (or prefer to use a bash script over a batch script), run "loadbgs.sh"
-  * if you have python installed you can choose to use "loadbgs.py" but it does the same as the other two
+  * if you have python installed you can choose to use "loadbgs.py" but it does the same thing as the other two.
+  
   The bgs.js file should now contain an array of the filenames in the "backgrounds" folder.
 
 Add a cors proxy server.
@@ -49,9 +50,9 @@ Google Chrome (version 70+)
 
 ### Installing
 
-Go to settings and navigate to extensions.
+Click on the chrome menu, navigate to extensions (More Tools > Extensions).
 
-Click on "Load unpacked" at the top right. Navigate to and select the folder containing the extension and press "Select Folder".
+Click on "Load unpacked" at the top left. Navigate to and select the folder containing the extension and press "Select Folder".
 
 Right click the icon at the top and click on options, add sources, select favourite bookmarks as directed above.
 
