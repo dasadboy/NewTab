@@ -17,7 +17,9 @@ chrome.runtime.onInstalled.addListener(() => {
       article: "#00a0a0",
       articleTitle: "#ffffff",
       articleDate: "#0000ff",
-      articleDesc: "#ffffff"
+      articleDesc: "#ffffff",
+      clockColor1: "#ffffff",
+      clockColor2: "#ffffff"
     }
   },
   () => {
