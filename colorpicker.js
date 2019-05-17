@@ -125,7 +125,9 @@ class ColorPicker {
       window.addEventListener("mousemove", drag);
       window.addEventListener("mouseup", end);
       document.querySelector("body").style.userSelect = "none";
-      if (this.currentTarget) this.currentTarget.updateValue(c);
+      if (this.currentTarget) this.currentTarget.updateValue(
+        this.getColor(pointerPos.x, pointerPos.y)
+      );
     }
 
     const drag = e => {
