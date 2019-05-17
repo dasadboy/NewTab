@@ -149,6 +149,7 @@ body > span {
   color: white;
   display: block;
   height: auto;
+  text-shadow: 0 0 5px #000000
 }
 
 #newsFeeds .clock {
