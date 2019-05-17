@@ -153,7 +153,7 @@ body > span {
 
 #newsFeeds .clock {
   position: relative;
-  width: 100%;
+  width: 134px;
   font-size: 24pt;
   padding: 10px;
 }
@@ -165,4 +165,5 @@ body > span {
   padding: 10px;
   top: 0;
   right: 0;
+  z-index: 1;
 }

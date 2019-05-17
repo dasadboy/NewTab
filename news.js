@@ -177,8 +177,8 @@ const getColors = () => {
       menu.style.backgroundColor = colors.menu;
       menu.style.borderColor = colors.menuBorder;
       menu.style.color = colors.feedBtnColor;
-      clock1.style.color = colors.clock1;
-      clock2.style.color = colors.clock2Init;
+      clock1.style.color = colors.clockColor1;
+      clock2.style.color = colors.clockColor2;
       resolve(colors);
     });
   });
