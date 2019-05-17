@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>News</title>
+  <meta name="description"
+  content="Read news articles from your favourite feeds">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf=8">
+  
+  <link rel="stylesheet" href="news.css">
+</head>
+<body data-bg-source="backgroundColor">
+<span id="newsFeeds" data-bg-source="menu" data-border-source="menuBorder">
+  <div class="clock" data-text-source="clockColor1">07:59:24</div>
+  <button class="feedBtn" data-bg-source="feedBtnColor"
+  data-text-source="buttonTextColor">Sample Feed1</button>
+  <button class="feedBtn" data-bg-source="feedBtnColor"
+  data-text-source="buttonTextColor">Sample Feed2</button>
+</span>
+<span id="feeds">
+  <div class="clock" data-text-source="clockColor2">12:34:55</div>
+  <div class="feed off">
+    <div class="feedName" data-text-source="feedName" data-bg-source="article">
+      Feed 1 Name
+    </div>
+    <div class="article" data-bg-source="article">
+      <div class="title" data-text-source="articleTitle">Sample Title 1</div>
+      <div class="date" data-text-source="articleDate">Wed, 1 Jan 2019 12:47:50 -0700</div>
+      <div class="desc" data-text-source="articleDesc">Sample description 1</div>
+    </div>
+    <div class="article" data-bg-source="article">
+      <div class="title" data-text-source="articleTitle">Sample Title 2</div>
+      <div class="date" data-text-source="articleDate">Fri, 1 July 2019 12:47:50 -0600</div>
+      <div class="desc" data-text-source="articleDesc">Sample description 1</div>
+    </div>
+  </div>
+  <div class="feed off" >
+    <div class="feedName" data-text-source="feedName" data-bg-source="article">
+      Feed 1 Name
+    </div>
+    <div class="article" data-bg-source="article">
+      <div class="title" data-text-source="articleTitle">Sample Title 3</div>
+      <div class="date" data-text-source="articleDate">Mon, 6 Jan 2019 11:38:15 -1700</div>
+      <div class="desc" data-text-source="articleDesc">Sample description 2</div>
+    </div>
+    <div class="article" data-bg-source="article">
+      <div class="title" data-text-source="articleTitle">Sample Title 4</div>
+      <div class="date" data-text-source="articleDate">Fri, 6 Feb 2019 11:38:15 -2100</div>
+      <div class="desc" data-text-source="articleDesc">Sample description 2</div>
+    </div>
+  </div>
+</span>
+<script src="newsdemo.js"></script>
+</body>
+</html>
