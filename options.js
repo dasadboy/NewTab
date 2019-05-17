@@ -1,4 +1,9 @@
-let feeds, proxy, bookmarksTree, close = 0, favs;
+let // Feeds
+    feeds, proxy,
+    // Bookmarks
+    bookmarksTree, close = 0, favs,
+    // News page theme
+    colorInputObjects, colorPicker;
 
 const openModal = modal => {
   const open = document.querySelector(".modal.active");
@@ -37,7 +42,7 @@ const saveFeeds = () => {
 const getProxy = () => {
   return new Promise(resolve => {
     chrome.storage.local.get("proxy", val => {
-      proxy = val.proxy
+      proxy = val.proxy;
       resolve(val.proxy);
     });
   });
@@ -67,6 +72,33 @@ const getFavIDs = () => {
     chrome.storage.local.get("fav_ids", value => favs = value.fav_ids);
     resolve(favs);
   })
+}
+
+const getColors = () => {
+  return new Promise(() => {
+    chrome.storage.local.get("newsPageColors" , val => {
+      let colors = val.newsPageColors;
+      colorKeys = Object.keys(colors);
+      colorInputObjects = [];
+      for (c of colorKeys) {
+        let inputObject = new ColorInput(c, colorPicker, colors[c])
+        colorInputObjects[c] = inputObject;
+        inputObject.preview();
+      }
+    });
+  });
+}
+
+const saveNewsPageTheme = () => {
+  let colors = {}, keys = Object.keys(colorInputObjects);
+  for (let targ in colorInputObjects) {
+    let ob = colorInputObjects[targ];
+    console.log(targ);
+    colors[ob.id] = ob.elem.value;
+  }
+  chrome.storage.local.set({newsPageColors: colors}, () => {
+    displayMessage("Theme saved.");
+  });
 }
 
 const loadFeeds = async () => {
@@ -397,10 +429,25 @@ const displayWarning = warning => {
   close = setTimeout(() => messageContainer.className = "alert down", 2000);
 }
 
+const setUpColorPicker = () => {
+  colorPicker = new ColorPicker();
+  colorPicker.bindListeners();
+  colorPicker.draw();
+}
+
+const previewTheme = e => {
+  e.preventDefault();
+  for (let c in colorInputObjects) {
+    colorInputObjects[c].preview();
+  }
+}
+
 const opsOnLoad = () => {
   loadFeeds();
   displayProxy();
   loadBookmarks();
+  setUpColorPicker();
+  getColors();
 }
 
 (() => {
@@ -431,4 +478,9 @@ const opsOnLoad = () => {
   document.querySelector("#upOne").addEventListener("click", moveUpDirectory);
 
   document.querySelector("#saveFavs").addEventListener("click", saveFavIDs);
+
+  document.querySelector("#saveTheme").addEventListener("click",
+  saveNewsPageTheme)
+
+  document.querySelector("#themeForm").addEventListener("click", previewTheme);
 })();
