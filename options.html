@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="options.css">
+    <script src="colorpicker.js"></script>
   </head>
   <body>
     <div id="news" class="section">
@@ -26,6 +27,41 @@
       <div id="folders" class="content"></div>
       <div id="pages" class="content"></div>
       <button id="saveFavs">Save Favourites</button>
+    </div>
+
+    <div id="newsPageTheme" class="section">
+      <div id="colorPicker">
+        <canvas width="642" height="322"></canvas>
+        <div id="pointer"></div>
+      </div>
+      <form id="themeForm">
+        <label>Background Color</label>
+        <input type="text" id="backgroundColor">
+        <label>Menu</label>
+        <input type="text" id="menu">
+        <label>Menu Border</label>
+        <input type="text" id="menuBorder">
+        <label>Feed Button</label>
+        <input type="text" id="feedBtnColor">
+        <label>Button Text</label>
+        <input type="text" id="buttonTextColor">
+        <label>Feed Name</label>
+        <input type="text" id="feedName">
+        <label>Article</label>
+        <input type="text" id="article">
+        <label>Article Title</label>
+        <input type="text" id="articleTitle">
+        <label>Article Date</label>
+        <input type="text" id="articleDate">
+        <label>Article Description</label>
+        <input type="text" id="articleDesc">
+        <label>Clock 1 Color</label>
+        <input type="text" id="clockColor1">
+        <label>Clock 2 Color</label>
+        <input type="text" id="clockColor2">
+        <button id="saveTheme">Save Theme</button>
+      </form>
+      <iframe id="demoNewsTheme" src="newsdemo.html"></iframe>
     </div>
 
     <div id="modalContainer" class="inactive">

@@ -1,7 +1,6 @@
 html, body {
   margin: 0;
   width: calc(100% - 20px);
-  height: calc(100% - 20px);
 }
 
 html {
@@ -11,6 +10,7 @@ html {
 body {
   padding: 20px;
   top: 0;
+  height: calc(100% - 20px);
 }
 
 ::-webkit-scrollbar {
@@ -414,4 +414,90 @@ input[type="submit"]:active {
 
 .hidden {
   display: none;
+}
+
+#colors {
+  display: block;
+  position: relative;
+  margin: 0;
+  padding: 10px;
+  border: 3px solid #ccc;
+  width: 774px;
+  height: 300px;
+}
+
+#newsPageTheme input[type="text"] {
+  display: block;
+  position: relative;
+  padding: 5px;
+  color: #9b7d7d;
+  width: 100px;
+}
+
+#newsPageTheme button{
+  display: block;
+  position: relative;
+  padding: 5px;
+  margin-top: 10px;
+  width: 100px;
+}
+
+#themeForm label {
+  display: block;
+  position: relative;
+  margin: 5px 0 0 0;
+  font-size: 1em;
+}
+
+#newsPageTheme form {
+  display: inline-block;
+  position: relative;
+}
+
+#newsPageTheme iframe {
+  display: inline-block;
+  position: relative;
+  border: 3px solid #003688;
+  top: 5px;
+  left: 8px;
+  width: 650px;
+  height: 600px;
+}
+
+#colorPicker {
+  display: block;
+  position: relative;
+  width: 642px;
+  height: 322px;
+  border: 2px solid gray;
+}
+
+#colorPicker canvas {
+  display: block;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  height: 322px;
+  width: 642px;
+}
+
+#pointer {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateX(-50%) translateY(-50%);
+  width: 3px;
+  height: 3px;
+  border: 2px solid white;
+  border-radius: 3px;
+  filter: drop-shadow(0 0 2px #000000);
+}
+
+#pointer.hide {
+  display: none;
+}
+
+#pointer.show {
+  display: block;
 }
