@@ -76,6 +76,7 @@ input[type="submit"]:active {
   height: auto;
   box-shadow: 0 0 10px #00000080;
   padding: 10px;
+  font-size: 0;
 }
 
 .content {
@@ -460,12 +461,12 @@ input[type="submit"]:active {
   border: 3px solid #003688;
   top: 5px;
   left: 8px;
-  width: 650px;
+  width: 668px;
   height: 600px;
 }
 
 #colorPicker {
-  display: block;
+  display: inline-block;
   position: relative;
   width: 642px;
   height: 322px;
@@ -479,6 +480,21 @@ input[type="submit"]:active {
   padding: 0;
   height: 322px;
   width: 642px;
+}
+
+#previewColor {
+  display: inline-block;
+  position: relative;
+  width: 144px;
+  height: 80px;
+  border: 2px solid gray;
+  margin: 0 0 0 5px;
+  background-color: black;
+  font-size: 0;
+}
+
+#themeForm label {
+  font-size: 10pt;
 }
 
 #pointer {
