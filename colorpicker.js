@@ -50,11 +50,13 @@ class ColorPicker {
     this.pointer = document.querySelector("#pointer");
     this.ctx = this.canv.getContext("2d");
     this.currentTarget = undefined;
+    this.previewElem = document.querySelector("#previewColor");
   }
 
   setTarget(targ) {
     this.currentTarget = targ;
-    this.pointer.className = "hide"
+    this.pointer.className = "hide";
+    this.previewElem.style.backgroundColor = targ.elem.value;
   }
 
   getColor(x, y) {
@@ -125,9 +127,10 @@ class ColorPicker {
       window.addEventListener("mousemove", drag);
       window.addEventListener("mouseup", end);
       document.querySelector("body").style.userSelect = "none";
-      if (this.currentTarget) this.currentTarget.updateValue(
-        this.getColor(pointerPos.x, pointerPos.y)
-      );
+      
+      let color = this.getColor(pointerPos.x, pointerPos.y);
+      if (this.currentTarget) this.currentTarget.updateValue(color);
+      this.previewElem.style.backgroundColor = color;
     }
 
     const drag = e => {
@@ -153,6 +156,7 @@ class ColorPicker {
       if (this.currentTarget) {
         this.currentTarget.updateValue(color);
       }
+      this.previewElem.style.backgroundColor = color;
     }
 
     const end = e => {
