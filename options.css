@@ -7,7 +7,7 @@ html, body {
 
 body {
   top: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 ::-webkit-scrollbar {
@@ -67,25 +67,32 @@ input[type="submit"]:active {
 }
 
 #tabs {
+  display: block;
+  position: absolute;
   font-size: 0;
   background-color: #808080;
-  height: 40px;
-  z-index: -1;
+  height: 100vw;
+  width: 40px;
+  transform: rotate(-90deg) translateY(-40px);
+  transform-origin: right top;
+  z-index: 0;
+  margin: 0;
+  overflow-x: auto;
 }
 
-#tabs span {
+#tabs > span {
   position: relative;
-  display: inline-block;
-  overflow: auto hidden;
+  display: block;
   font-size: 12pt;
-  top: 100%;
-  min-width: 150px;
-  transform: translateY(-33px);
+  width: 200px;
   background-color: #afafaf;
   padding: 5px;
   text-align: center;
   border: solid #ffc400;
   border-radius: 5px 5px 0 0;
+  transform: rotate(90deg) translateX(-30px);
+  margin-bottom: 186px;
+  transform-origin: left bottom;
 }
 
 #tabs span.inactive {
@@ -105,6 +112,7 @@ input[type="submit"]:active {
 .section {
   position: absolute;
   width: calc(100% - 20px);
+  top: 40px;
   min-width: 800px;
   height: auto;
   padding: 30px 10px;
