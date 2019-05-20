@@ -442,12 +442,28 @@ const previewTheme = e => {
   }
 }
 
+const switchTab = (tab, section)  => {
+  document.querySelector("#tabs .active").className = "inactive";
+  document.querySelector(".section.visible").className = "section hidden";
+  tab.className = "active";
+  section.className = "section visible";
+}
+
+const setUpTabs = () => {
+  const tabs = [...document.querySelectorAll("#tabs > span")],
+        sections = [...document.querySelectorAll(".section")];
+  for (let i = 0; i < tabs.length; i++) {
+    tabs[i].addEventListener("click", () => switchTab(tabs[i], sections[i]));
+  }
+}
+
 const opsOnLoad = () => {
   loadFeeds();
   displayProxy();
   loadBookmarks();
   setUpColorPicker();
   getColors();
+  setUpTabs();
 }
 
 (() => {
