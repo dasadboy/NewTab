@@ -90,8 +90,7 @@ input[type="submit"]:active {
   text-align: center;
   border: solid #ffc400;
   border-radius: 5px 5px 0 0;
-  transform: rotate(90deg) translateX(-30px);
-  margin-bottom: 186px;
+  transform: rotate(90deg) translateX(-34px);
   transform-origin: left bottom;
 }
 
@@ -99,6 +98,7 @@ input[type="submit"]:active {
   z-index: 0;
   height: 20px;
   border-width: 0 1px;
+  margin-bottom: 180px;
 }
 
 #tabs span.active {
@@ -107,6 +107,7 @@ input[type="submit"]:active {
   height: 21px;
   border-width: 2px 2px 0 2px;
   box-shadow: 0 0 10px #000000af;
+  margin-bottom: 184px;
 }
 
 .section {
