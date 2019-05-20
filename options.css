@@ -43,7 +43,6 @@ button:active {
 input[type="text"] {
   height: 15px;
   background-color: white;
-  width: 200px;
   outline: 0;
   padding: 10px;
   border: 1px solid #c0c0c0;
@@ -139,6 +138,12 @@ input[type="submit"]:active {
   display: none;
 }
 
+.title {
+  display: block;
+  position: relative;
+  font-size: 16px;
+}
+
 .content {
   display: block;
   position: relative;
@@ -155,6 +160,10 @@ input[type="submit"]:active {
   height: 3px;
   width: 3px;
   position: absolute;
+}
+
+#saveFeeds {
+  left: calc(50% + 200px);
 }
 
 #modalContainer {
@@ -339,12 +348,24 @@ input[type="submit"]:active {
 
 #proxy {
   position: relative;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 #setProxy {
   height: 35px;
   border-radius: 18px;
+}
+
+#newFeedForm {
+  display: block;
+  position: relative;
+  height: auto;
+  width: 800px;
+  margin: 10px 0 10px 0;
+}
+
+#newFeedForm input[type="text"] {
+  width: 323px;
 }
 
 #folders {
