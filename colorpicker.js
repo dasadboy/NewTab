@@ -106,8 +106,6 @@ class ColorPicker {
       y: 0
     }
 
-    console.log(canvHeight);
-
     const getCanvPos = () => {
       let current = this.canv, totalOffsetLeft = 0, totalOffsetTop = 0;
       while (current) {
