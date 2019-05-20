@@ -116,7 +116,7 @@ class ColorPicker {
         current = current.parentElement;
       }
       canvPos.x = totalOffsetLeft;
-      canvPos.y = totalOffsetTop - section.scrollTop;
+      canvPos.y = totalOffsetTop;
       return 1;
     }
 
@@ -124,7 +124,7 @@ class ColorPicker {
       getCanvPos();
       this.pointer.className = "show";
       pointerPos.x = e.pageX - canvPos.x;
-      pointerPos.y = e.pageY - canvPos.y;
+      pointerPos.y = e.pageY - canvPos.y + section.scrollTop;
       this.pointer.style.left = pointerPos.x + "px";
       this.pointer.style.top = pointerPos.y + "px";
       window.addEventListener("mousemove", drag);
