@@ -478,9 +478,6 @@ const opsOnLoad = () => {
   document.querySelector("#newFeedForm").addEventListener("submit",
   getNewFeed);
 
-  document.querySelector("#addFeeds").addEventListener("click",
-  () => openModal(document.querySelector("#inputFeed")));
-
   document.querySelector("#addMultipleFeeds").addEventListener("click",
   () => openModal(document.querySelector("#inputFeeds")));
 
