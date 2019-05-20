@@ -93,35 +93,38 @@ class ColorPicker {
   }
 
   bindListeners() {
-    const canvHeight = this.canv.offsetHeight,
-          canvWidth = this.canv.offsetWidth;
+    const canvHeight = this.canv.height,
+          canvWidth = this.canv.width,
+          section = this.canv.parentElement.parentElement;
     let pointerPos = {
       x: this.pointer.offsetTop,
       y: this.pointer.offsetLeft
     }
 
-    let canvPosLeft = (() => {
-      let current = this.canv, totalOffset = 0;
-      while (current) {
-        totalOffset += current.offsetLeft
-        current = current.parentElement;
-      }
-      return totalOffset;
-    })();
+    let canvPos = {
+      x: 0,
+      y: 0
+    }
 
-    let canvPosTop = (() => {
-      let current = this.canv, totalOffset = 0;
+    console.log(canvHeight);
+
+    const getCanvPos = () => {
+      let current = this.canv, totalOffsetLeft = 0, totalOffsetTop = 0;
       while (current) {
-        totalOffset += current.offsetTop;
+        totalOffsetLeft += current.offsetLeft;
+        totalOffsetTop += current.offsetTop;
         current = current.parentElement;
       }
-      return totalOffset;
-    })();
+      canvPos.x = totalOffsetLeft;
+      canvPos.y = totalOffsetTop - section.scrollTop;
+      return 1;
+    }
 
     const initPicking = e => {
+      getCanvPos();
       this.pointer.className = "show";
-      pointerPos.x = e.pageX - canvPosLeft;
-      pointerPos.y = e.pageY - canvPosTop;
+      pointerPos.x = e.pageX - canvPos.x;
+      pointerPos.y = e.pageY - canvPos.y;
       this.pointer.style.left = pointerPos.x + "px";
       this.pointer.style.top = pointerPos.y + "px";
       window.addEventListener("mousemove", drag);
@@ -134,8 +137,8 @@ class ColorPicker {
     }
 
     const drag = e => {
-      let x = e.pageX - canvPosLeft,
-          y = e.pageY - canvPosTop,
+      let x = e.pageX - canvPos.x,
+          y = e.pageY - canvPos.y + section.scrollTop,
           color;
       if (x > canvWidth - 1) {
         x = canvWidth;
