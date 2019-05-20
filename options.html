@@ -26,6 +26,17 @@
         </span>
         <button id="setProxy" class="fieldButton">Set Proxy</button>
       </div>
+      <form id="newFeedForm">
+        <input name="feedName" id="newFeedName" type="text"
+        placeholder="Feed name" autocomplete="off">
+        <input name="source" id="newFeedSrc" type="text"
+        placeholder="RSS Link" autocomplete="off">
+        <input type="submit">
+      </form>
+      <br>
+      <button id="addMultipleFeeds">
+        Add Multiple
+      </button>
     </div>
 
     <div id="bookmarks" class="section hidden">
@@ -72,19 +83,7 @@
     </div>
 
     <div id="modalContainer" class="inactive">
-      <div id="inputFeed" class="modal inactive">
-        <form id="newFeedForm">
-          <input name="feedName" id="newFeedName" type="text"
-          placeholder="Feed name" autocomplete="off">
-          <input name="source" id="newFeedSrc" type="text"
-          placeholder="RSS Link" autocomplete="off">
-          <input type="submit">
-        </form>
-        <br>
-        <button id="addMultipleFeeds">
-          Add Multiple
-        </button>
-      </div>
+      
       <div id="inputFeeds" class="modal inactive">
         <textarea id="feedsBlock" class="inputTextBlock"></textarea>
         <button id="parseSubmit">Parse & Submit</button>
