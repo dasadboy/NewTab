@@ -92,6 +92,8 @@ input[type="submit"]:active {
   border-radius: 5px 5px 0 0;
   transform: rotate(90deg) translateX(-34px);
   transform-origin: left bottom;
+  user-select: none;
+  cursor: pointer;
 }
 
 #tabs span.inactive {
