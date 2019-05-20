@@ -5,24 +5,6 @@ let // Feeds
     // News page theme
     colorInputObjects, colorPicker;
 
-const openModal = modal => {
-  const open = document.querySelector(".modal.active");
-
-  if (open) {open.className = "modal inactive"}
-  document.querySelector("#modalContainer").className = "active";
-  modal.className = "modal active";
-}
-
-const closeModal = () => {
-  document.querySelector(".modal.active").className = "modal inactive";
-  document.querySelector("#modalContainer").className = "inactive";
-}
-
-const closeModalOnClickOutside = event => {
-  if (event.target.id === "modalContainer") {
-    closeModal();
-  }
-}
 
 const getFeeds = () => {
   return new Promise(resolve => {
@@ -414,9 +396,9 @@ const displayMessage = message => {
   
   messageContainer.textContent = message;
 
-  messageContainer.className = "alert up";
+  messageContainer.className = "alert out";
   clearTimeout(close);
-  close = setTimeout(() => messageContainer.className = "alert down", 2000);
+  close = setTimeout(() => messageContainer.className = "alert in", 2000);
 }
 
 const displayWarning = warning => {
@@ -424,9 +406,9 @@ const displayWarning = warning => {
   
   messageContainer.textContent = warning;
 
-  messageContainer.className = "alert up";
+  messageContainer.className = "alert out";
   clearTimeout(close);
-  close = setTimeout(() => messageContainer.className = "alert down", 2000);
+  close = setTimeout(() => messageContainer.className = "alert in", 2000);
 }
 
 const setUpColorPicker = () => {
@@ -457,6 +439,13 @@ const setUpTabs = () => {
   }
 }
 
+const setUpExitBtns = () => {
+  const exit = e => e.currentTarget.parentElement.className = "closed";
+  for (let btn of [...document.querySelectorAll(".exit")]) {
+    btn.addEventListener("click", exit)
+  }
+}
+
 const opsOnLoad = () => {
   loadFeeds();
   displayProxy();
@@ -464,6 +453,7 @@ const opsOnLoad = () => {
   setUpColorPicker();
   getColors();
   setUpTabs();
+  setUpExitBtns();
 }
 
 (() => {
@@ -471,15 +461,12 @@ const opsOnLoad = () => {
 
   document.querySelector("#feedsBlock").placeholder = 
   "feed1 name, feed1 RSS link\nfeed2 name, feed2 RSS link\n...";
-  
-  document.querySelector("#modalContainer").addEventListener("click",
-  closeModalOnClickOutside);
 
   document.querySelector("#newFeedForm").addEventListener("submit",
   getNewFeed);
 
   document.querySelector("#addMultipleFeeds").addEventListener("click",
-  () => openModal(document.querySelector("#inputFeeds")));
+  () => document.querySelector("#inputFeeds").className = "open");
 
   document.querySelector("#parseSubmit").addEventListener("click",
   parseFeedsBlock);

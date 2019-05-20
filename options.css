@@ -166,71 +166,86 @@ input[type="submit"]:active {
   left: calc(50% + 200px);
 }
 
-#modalContainer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #00000080;
-}
-
-#modalContainer.active {
+#inputFeeds {
   display: block;
-}
-
-#modalContainer.inactive {
-  display: none;
-}
-
-.modal {
   position: relative;
-  height: auto;
-  max-height: 600px;
-  width: 600px;
-  box-shadow: 0 0 20px #00000080;
+  width: 780px;
   background-color: white;
-  margin: 0 auto;
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+
+#inputFeeds.closed {
+  height: 0;
+  margin: 0;
+  box-shadow: 0 0 0 #00000000;
+  padding: 0 10px;
+  opacity: 0;
+}
+
+#inputFeeds.open {
+  height: 350px;
+  margin: 10px 0 0 0;
+  box-shadow: 0 0 20px #00000080;
   padding: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.modal.active {
-  display: block;
-}
-
-.modal.inactive {
-  display: none;
+  opacity: 1;
 }
 
 #inputFeeds .inputTextBlock {
-  width: 594px;
-  height: 300px;
+  width: 774px;
+  height: 290px;
   resize: none;
   white-space: pre;
   border: 1px solid gray;
   outline-color: #00000065;
 }
 
+#inputFeeds .exit {
+  display: block;
+  position: relative;
+  color: #b4b4b4;
+  font-size: 12pt;
+  font-weight: 600;
+  top: -5px;
+  float: right;
+  left: 7px;
+  font-family: Arial;
+  height: 15px;
+  width: 15px;
+  margin: 0;
+  user-select: none;
+  cursor: default;
+}
+
+#inputFeeds .exit:hover {
+  color: #646464;
+}
+
+
 .alert {
   display: block;
   position: fixed;
-  top: 100%;
-  width: 300px;
   height: auto;
-  padding: 10px;
-  left: 50%;
-  transition-duration: 0.5s;
   text-align: center;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
 }
 
-.alert.up {
-  transform: translateY(-100%) translateX(-50%);
+.alert.out {
+  width: 100%;
+  opacity: 1;
+  transition-duration: 0.75s;
+  padding: 10px;
 }
 
-.alert.down {
-  transform: translateY(0) translateX(-50%);
+.alert.in {
+  width: 0;
+  transform: translateY(0);
+  opacity: 0;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.5s;
+  padding: 10px 0;
 }
 
 #message {
