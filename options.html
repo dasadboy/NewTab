@@ -9,7 +9,13 @@
     <script src="colorpicker.js"></script>
   </head>
   <body>
-    <div id="news" class="section">
+    <div id="tabs">
+      <span class="active">News Feeds</span>
+      <span class="inactive">Bookmarks</span>
+      <span class="inactive">News Page Theme</span>
+    </div>
+
+    <div id="news" class="section visible">
       <div id="feeds" class="content"></div>
       <button id="addFeeds">Add Feed</button>
       <button id="saveFeeds">Save Feeds</button>
@@ -22,14 +28,14 @@
       </div>
     </div>
 
-    <div id="bookmarks" class="section">
+    <div id="bookmarks" class="section hidden">
       <button id="upOne"><div></div></button>
       <div id="folders" class="content"></div>
       <div id="pages" class="content"></div>
       <button id="saveFavs">Save Favourites</button>
     </div>
 
-    <div id="newsPageTheme" class="section">
+    <div id="newsPageTheme" class="section hidden">
       <div id="colorPicker">
         <canvas width="642" height="322"></canvas>
         <div id="pointer"></div>
