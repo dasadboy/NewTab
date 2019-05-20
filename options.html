@@ -29,6 +29,10 @@
         Add Multiple
       </button>
       <button id="saveFeeds">Save Feeds</button>
+      <div id="inputFeeds" class="closed">
+        <textarea id="feedsBlock" class="inputTextBlock"></textarea>
+        <button id="parseSubmit">Parse & Submit</button>
+      </div>
       <div id="proxy">
         <span>
           <input type="text" id="currentProxy" autocomplete="off"
@@ -79,14 +83,6 @@
         <button id="saveTheme">Save Theme</button>
       </form>
       <iframe id="demoNewsTheme" src="newsdemo.html"></iframe>
-    </div>
-
-    <div id="modalContainer" class="inactive">
-      
-      <div id="inputFeeds" class="modal inactive">
-        <textarea id="feedsBlock" class="inputTextBlock"></textarea>
-        <button id="parseSubmit">Parse & Submit</button>
-      </div>
     </div>
     <div id="message" class="alert down"></div>
     <div id="warning" class="alert down"></div>
