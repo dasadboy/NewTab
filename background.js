@@ -12,14 +12,14 @@ chrome.runtime.onInstalled.addListener(() => {
       menu: "#101010",
       menuBorder: "#ffffff",
       feedBtnColor: "#4e008d",
-      buttonTextColor: "#ffffff",
+      feedBtnTxtColor: "#ffffff",
       feedName: "#ffffff",
       article: "#00a0a0",
       articleTitle: "#ffffff",
       articleDate: "#0000ff",
       articleDesc: "#ffffff",
-      clockColor1: "#ffffff",
-      clockColor2: "#ffffff"
+      clock1Color: "#ffffff",
+      clock2Color: "#ffffff"
     }
   },
   () => {
