@@ -1,3 +1,8 @@
+:root {
+  --button-color: #003688;
+  --button-font-size: 10pt;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -23,11 +28,6 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #00000046;
   border-radius: 10px;
-}
-
-:root {
-  --button-color: #003688;
-  --button-font-size: 10pt;
 }
 
 button {
@@ -58,7 +58,7 @@ input[type="text"] {
 
 input[type="submit"] {
   position: relative;
-  background-color: #003688;
+  background-color: var(--button-color);
   height: 35px;
   width: 100px;
   color: white;
@@ -133,6 +133,7 @@ input[type="submit"]:active {
   z-index: 1;
   overflow-x: hidden;
   overflow-y: auto;
+  white-space: nowrap;
 }
 
 .section > * {
@@ -543,7 +544,7 @@ input[type="submit"]:active {
 }
 
 #newsPageTheme button{
-  display: block;
+  display: inline-block;
   position: relative;
   padding: 5px;
   margin-top: 10px;
@@ -565,9 +566,9 @@ input[type="submit"]:active {
 #newsPageTheme iframe {
   display: inline-block;
   position: relative;
-  border: 3px solid #003688;
+  border: 3px solid var(--button-color);
   width: 668px;
-  height: 600px;
+  height: 560px;
   margin: 8px;
 }
 
