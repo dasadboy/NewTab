@@ -186,7 +186,7 @@ body > span {
   position: absolute;
   width: auto;
   font-size: 20px;
-  padding: 10px;
+  padding: 5px 10px;
   top: 0;
   right: 0;
   z-index: 1;
