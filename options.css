@@ -25,9 +25,14 @@ body {
   border-radius: 10px;
 }
 
+:root {
+  --button-color: #003688;
+  --button-font-size: 10pt;
+}
+
 button {
   position: relative;
-  background-color: #003688;
+  background-color: var(--button-color);
   height: 40px;
   width: 100px;
   color: white;
@@ -35,6 +40,7 @@ button {
   transition: 0.07s;
   outline: none;
   border-radius: 1px;
+  font-size: var(--button-font-size);
 }
 
 button:active {
@@ -60,6 +66,7 @@ input[type="submit"] {
   border-radius: 1px;
   transition: 0.05s;
   outline: none;
+  font-size: var(--button-font-size);
 }
 
 input[type="submit"]:active {
