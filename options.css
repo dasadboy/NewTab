@@ -109,8 +109,8 @@ input[type="submit"]:active {
   z-index: 0;
   height: 20px;
   border-width: 0 1px;
-  margin-top: 3px;
-  margin-bottom: 179px;
+  top: 4px;
+  margin-bottom: 181px;
 }
 
 #tabs span.active {
@@ -119,7 +119,7 @@ input[type="submit"]:active {
   height: 21px;
   border-width: 2px 2px 0 2px;
   box-shadow: 0 0 10px #000000af;
-  margin-bottom: 184px;
+  margin-bottom: 181px;
 }
 
 .section {
