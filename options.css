@@ -17,11 +17,12 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #7a7a7a;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #4d4d4d
+  background-color: #00000046;
+  border-radius: 10px;
 }
 
 button {
@@ -100,7 +101,8 @@ input[type="submit"]:active {
   z-index: 0;
   height: 20px;
   border-width: 0 1px;
-  margin-bottom: 180px;
+  margin-top: 3px;
+  margin-bottom: 179px;
 }
 
 #tabs span.active {
