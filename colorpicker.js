@@ -1,10 +1,11 @@
 class ColorInput {
   constructor(id, picker, color) {
-    this.demoDoc = document.querySelector("#demoNewsTheme").contentWindow
-      .document;
+    this.demoRoot = document.querySelector("#demoNewsTheme").contentWindow
+      .document.documentElement;
     this.id = id;
     this.elem = document.querySelector(`#${id}`);
     this.elem.value = color;
+    this.elem.defaultColor = color;
     this.picker = picker;
     this.elem.addEventListener("click", () => this.makeFocus());
     this.elem.addEventListener("change", () => this.preview());
@@ -20,22 +21,12 @@ class ColorInput {
 
   preview() {
     const val = this.elem.value;
-    if (val.length === 7 || val.length === 9) {
+    if (/^(#[0-9|a-f]{6}|#[0-9|a-f]{8})$/i.test(val)) {
       this.elem.style.backgroundColor = "";
+      this.demoRoot.style.setProperty(`--${this.id}`, val);
     } else {
       this.elem.style.backgroundColor = "#ffdddd";
-    }
-    for (let dom of this.demoDoc
-      .querySelectorAll(`[data-bg-source='${this.id}']`)) {
-      dom.style.backgroundColor = val;
-    }
-    for (let dom of this.demoDoc
-      .querySelectorAll(`[data-text-source='${this.id}']`)) {
-      dom.style.color = val;
-    }
-    for (let dom of this.demoDoc
-      .querySelectorAll(`[data-border-source='${this.id}']`)) {
-      dom.style.borderColor = val;
+      this.demoRoot.style.setProperty(`--${this.id}`, this.elem.defaultColor)
     }
   }
 
@@ -85,8 +76,8 @@ class ColorPicker {
     grd = this.ctx.createLinearGradient(0, 0, 0, 322);
     grd.addColorStop(0, "#ffffff");
     grd.addColorStop(1/322, "#ffffff");
-    grd.addColorStop(0.49, "rgb(255, 255, 255, 0)");
-    grd.addColorStop(0.51, "rgb(0, 0, 0, 0)");
+    grd.addColorStop(0.49, "#ffffff00");
+    grd.addColorStop(0.51, "#00000000");
     grd.addColorStop(1, "#000000");
     this.ctx.fillStyle = grd;
     this.ctx.fillRect(0, 0, 642, 322);
