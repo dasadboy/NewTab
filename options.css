@@ -34,7 +34,8 @@ button {
   position: relative;
   background-color: var(--button-color);
   height: 40px;
-  width: 100px;
+  width: auto;
+  min-width: 100px;
   color: white;
   border: none;
   transition: 0.07s;
@@ -411,7 +412,7 @@ input[type="submit"]:active {
   margin-bottom: 5px;
 }
 
-#upOne div {
+#upOne > div {
   position: absolute;
   border: solid #999999;
   height: 9px;
@@ -425,9 +426,23 @@ input[type="submit"]:active {
   transition-timing-function: linear;
 }
 
-#upOne:hover div {
+#upOne:hover > div {
   height: 10px;
   width: 10px;
+}
+
+#upOne > span {
+  display: inline-block;
+  position: relative;
+  font-size: 10pt;
+  color: #999999;
+  top: 50%;
+  transition-duration: 0.25s;
+  font-weight: 400;
+}
+
+#upOne:hover > span {
+  font-weight: 600;
 }
 
 .folders {
