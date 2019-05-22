@@ -43,11 +43,6 @@ class Article {
 
     titleElem.href = article.url;
 
-    articleElem.style.backgroundColor = colors.article;
-    titleElem.style.color = colors.articleTitle;
-    dateElem.style.color = colors.articleDate;
-    descElem.style.color = colors.articleDesc;
-
     articleElem.appendChild(titleElem);
     articleElem.appendChild(dateElem);
     articleElem.appendChild(descElem);
@@ -65,7 +60,7 @@ class Article {
   }
 }
 
-let newsFeeds, proxy, colors,
+let newsFeeds, proxy,
     allArticles = {};
 
 // News 
@@ -75,6 +70,13 @@ const getNewsFeeds = () => {
       newsFeeds = val.newsFeeds;
       proxy = val.proxy;
       resolve(val.proxy, val.newsFeeds);
+      if (!newsFeeds && !proxy) {
+        alert("No news feeds or proxies have been set.");
+      } else if (!newsFeeds) {
+        alert("No news feeds have been set.");
+      } else if (!proxy) {
+        alert("No proxy has been set.");
+      }
     });
   });
 }
@@ -107,8 +109,6 @@ const createFeed = src => {
         feedName = document.createElement("div"),
         button = document.createElement("button");
   feedName.className = "feedName";
-  feedName.style.backgroundColor = colors.article;
-  feedName.style.color = colors.feedName;
   feedName.textContent = src;
   container.appendChild(feedName);
   allArticles[src].forEach(ar => container.append(Article.buildElement(ar)));
@@ -118,13 +118,10 @@ const createFeed = src => {
     const active = document.querySelector(".feed.on");
     if (active) {active.className = "feed off"}
     container.className = "feed on";
-    document.querySelector("#feeds .clock").style.color = colors.clock2
   }
 
   button.className = "feedBtn";
   button.textContent = src;
-  button.style.backgroundColor = colors.feedBtnColor;
-  button.style.color = colors.buttonTextColor;
   button.addEventListener("click", openFeed);
   document.querySelector("#newsFeeds").appendChild(button);
   
@@ -169,16 +166,13 @@ const loadTime = () => {
 const getColors = () => {
   return new Promise(resolve => {
     chrome.storage.local.get("newsPageColors", val => {
-      const menu = document.querySelector("#newsFeeds"),
-            [clock1, clock2] = document.querySelectorAll(".clock");
-      colors = val.newsPageColors;
+      const root = document.documentElement,
+            colors = val.newsPageColors;
 
-      document.querySelector("body").style.backgroundColor = colors.background;
-      menu.style.backgroundColor = colors.menu;
-      menu.style.borderColor = colors.menuBorder;
-      menu.style.color = colors.feedBtnColor;
-      clock1.style.color = colors.clockColor1;
-      clock2.style.color = colors.clockColor2;
+      for (c in colors) {
+        root.style.setProperty(`--${c}`, colors[c]);
+      }
+
       resolve(colors);
     });
   });
