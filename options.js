@@ -114,7 +114,12 @@ const buildFeed = feed => {
     menuBtn.appendChild(document.createElement("div"));
   }
 
-  menuBtn.addEventListener("click", () => createMenu(feedDiv));
+  menuBtn.addEventListener("click", e => {
+    const menu = createMenu(feedDiv);
+    console.log(e.pageY, e.pageX);
+    menu.style.top = `${e.pageY - 40}px`;
+    menu.style.left = `${e.pageX}px`;
+  });
 
   feedDiv.appendChild(name);
   feedDiv.appendChild(src);
@@ -129,9 +134,7 @@ const createMenu = feedDiv => {
         editSrcBtn = document.createElement("button"),
         removeBtn = document.createElement("button");
   
-  const position = Math.max(0,
-        feedDiv.offsetTop - feedDiv.parentNode.scrollTop),
-        index = feedDiv.offsetTop/feedDiv.offsetHeight;
+  const index = feedDiv.offsetTop/feedDiv.offsetHeight;
 
   menu.className = "menu";
   
@@ -160,7 +163,7 @@ const createMenu = feedDiv => {
 
   document.querySelector("#news").appendChild(menu);
 
-  menu.style.transform = "translateY(" + position + "px)";
+  return menu;
 }
 
 const editName = (feed, index) => {

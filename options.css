@@ -202,7 +202,13 @@ input[type="submit"]:active {
   opacity: 1;
 }
 
+#inputFeeds button {
+  display: block;
+}
+
 #inputFeeds .inputTextBlock {
+  display: block;
+  position: relative;
   width: 774px;
   height: 290px;
   resize: none;
@@ -226,12 +232,13 @@ input[type="submit"]:active {
   margin: 0;
   user-select: none;
   cursor: default;
+  line-height: 15px;
+  text-align: center;
 }
 
 #inputFeeds .exit:hover {
   color: #646464;
 }
-
 
 .alert {
   display: block;
@@ -329,8 +336,6 @@ input[type="submit"]:active {
 .menu {
   display: block;
   position: absolute;
-  top: 12px;
-  left: 802px;
   border: 1px solid #c9c9c9;
 }
 
