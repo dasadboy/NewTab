@@ -69,10 +69,34 @@ body {
   overflow: visible;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 8pt;
 }
 
 #dragThis:hover {
   box-shadow: inset 0 0 5px 1px #ffffff30;
+}
+
+#dragThis a, #options {
+  text-decoration: none;
+  color: white;
+}
+
+#dragThis a:hover {
+  text-decoration-line: underline;
+  text-shadow: 0 0 5px white;
+}
+
+#options {
+  font-size: 10pt;
+  position: fixed;
+  margin: 10px;
+  bottom: 0;
+  right: 0;
+  text-shadow: 0 0 5px black, 0 0 5px black;
+}
+
+#options:hover {
+  text-shadow: 0 0 5px black, 0 0 5px black, 0 0 5px black;
 }
 
 #toNews {
