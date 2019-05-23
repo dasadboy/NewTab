@@ -53,7 +53,7 @@ Click on the chrome menu, navigate to extensions (More Tools > Extensions).
 
 Click on "Load unpacked" at the top left. Navigate to and select the folder containing the extension and press "Select Folder".
 
-Right click the extension's icon at the top and click on options. Add sources and select favourite bookmarks as directed above.
+Open a new tab, click on settings in the bottom right and change settings at your leisure.
 
 ## Acknowledgments
 
