@@ -131,7 +131,10 @@ const createFeed = src => {
 const loadArticles = async () => {
   const container = document.querySelector("#feeds");
   await getNewsFeeds();
-  await Promise.all([...newsFeeds].map(item => fetchAndParse(item)));
+  let loadingFeeds = [...newsFeeds].map(item => fetchAndParse(item));
+  for (p of loadingFeeds) {
+    await p
+  }
   for (let src of Object.keys(allArticles)) {
     container.appendChild(createFeed(src));
   }
