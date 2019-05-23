@@ -66,12 +66,30 @@ const loadRSSFeed = (sourceName, feedSrc, proxy) => {
 }
 
 const setUpNewsDisplay = async () => {
-  let loadingFeeds;
   await getFeeds();
-  loadingFeeds = [...feeds].map(feed => loadRSSFeed(feed[0], feed[1], proxy));
-  for (p of loadingFeeds) await p;
-  if (allArticles.length > 0) {
+  if (feeds.length === 0) {
+    const a = document.createElement("a"),
+          dragThis = document.querySelector("#dragThis");
+    console.log("There are no articles to display. Add RSS feeds in options.");
+    a.textContent = "Click here to add RSS feeds to display here.";
+    a.href = "options.html"
+    dragThis.innerHTML = "";
+    dragThis.appendChild(a);
+  } else if (proxy.length === 0) {
+    const a = document.createElement("a"),
+          dragThis = document.querySelector("#dragThis");
+    console.log("A proxy must be set in order to access feed data.");
+    a.textContent = "Click here to set a proxy.";
+    a.href = "options.html"
+    dragThis.innerHTML = "";
+    dragThis.appendChild(a);
+  } else {
     const newsContainer = document.querySelector("#news");
+    
+    let loadingFeeds = [...feeds]
+    .map(feed => loadRSSFeed(feed[0], feed[1], proxy));
+    
+    for (p of loadingFeeds) await p;
 
     const chooseArticle = () => {
       i = Math.floor(Math.random()*allArticles.length);
@@ -96,10 +114,5 @@ const setUpNewsDisplay = async () => {
     newsContainer.addEventListener("mouseover", pause);
 
     newsContainer.addEventListener("mouseout", resume);
-  } else {
-    console.log("There are no articles to display."
-    + " Add RSS feeds in options.");
-    document.querySelector("#dragThis").innerHTML = "Set RSS feeds in"
-    + " options to view news articles here."
   }
 }
