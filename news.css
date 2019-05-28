@@ -112,6 +112,7 @@ body > span {
   display: block;
   position: relative;
   color: var(--feedName);
+  background-color: var(--article);
   font-size: 20pt;
   padding: 0 5px;
   width: calc(100% - 10px);
